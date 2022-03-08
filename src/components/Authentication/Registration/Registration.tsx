@@ -2,18 +2,23 @@ import React, { Component } from 'react';
 import { Form, Input, Button } from 'reactstrap';
 import './Registration.scss';
 
-export default class Registration extends Component {
-  constructor(props) {
+interface IProps {
+}
+
+interface IRegistrationState {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+}
+
+export class Registration extends Component<IProps, IRegistrationState> {
+  constructor(props: IProps) {
     super(props);
-    this.state = {
-      firstName: this.props.value,
-      lastName: this.props.value,
-      email: this.props.value,
-      password: this.props.value
-    }
+    this.state = { }
   }
 
-  handleChange = (e) => {
+  handleChange = (e: any) => {
     const { name, value } = e.target;
     console.log(name, value);
     this.setState({
