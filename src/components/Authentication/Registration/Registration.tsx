@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Input, Button } from 'reactstrap';
 import { ValidationConstants } from '../../../constants/validationConstants';
 import { User } from '../../../contexts/user';
@@ -67,7 +68,6 @@ export class Registration extends Component<IProps, IRegistrationState> {
 
   public handleChange = (e: any) => {
     const { name, value } = e.target;
-    //console.log(name, value);
     this.setState({
       [name]: value
     });
@@ -150,11 +150,12 @@ export class Registration extends Component<IProps, IRegistrationState> {
                 />
               </div>
               <div className='register-button-container'>
-                <Button color="primary" onClick={this.save}>Register</Button>
+                <Button className='register-button' color="primary" onClick={this.save}>Register</Button>
               </div>
               <div>{fieldValidationErrorMessage}</div>
             </Form>
           </div>
+          <p>Have already an account? <Link to={'/login'}>Login here</Link></p>
         </div>
       </div>
     )

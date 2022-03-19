@@ -4,11 +4,11 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Registration } from './components/Authentication/Registration/Registration';
+import Router from './Router';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Registration />
+    <Router />
   </React.StrictMode>,
   document.getElementById('root')
 );
