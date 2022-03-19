@@ -1,13 +1,15 @@
 import { Component } from "react";
 import { Button, Form, Input } from "reactstrap";
+import { UserService } from "../../../services/userService";
 import './Login.scss';
+import { UserLoginForm } from "./Model/UserLoginForm";
 
 interface IProps {
 }
 
 interface ILoginState {
-  email?: string;
-  password?: string;
+  email: string;
+  password: string;
 }
 
 export class Login extends Component<IProps, ILoginState> {
@@ -19,15 +21,24 @@ export class Login extends Component<IProps, ILoginState> {
     };
   }
 
-  public handleChange = (e: any) => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    });
+  public handleChange = (event: any) => {
+    const { name, value } = event.target;
+    const newState = { [name]: value } as Pick<ILoginState, keyof ILoginState>;
+    this.setState(newState);
   }
 
-  public save(): void {
+  public onLogin(): void {
+    const { email, password } = this.state;
+    const userDto: UserLoginForm = {
+      email,
+      password
+    };
 
+    const userService = new UserService();
+    const users = userService.getAll();
+    users.then((data) => {
+      console.log(data);
+    })
   }
 
   render() {
@@ -59,7 +70,7 @@ export class Login extends Component<IProps, ILoginState> {
                 />
               </div>
               <div className='login-button-container'>
-                <Button className='login-button' color="primary" onClick={this.save}>Login</Button>
+                <Button className='login-button' color="primary" onClick={this.onLogin.bind(this)}>Login</Button>
               </div>
             </Form>
           </div>

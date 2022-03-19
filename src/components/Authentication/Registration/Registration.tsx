@@ -4,18 +4,19 @@ import { Form, Input, Button } from 'reactstrap';
 import { ValidationConstants } from '../../../constants/validationConstants';
 import { User } from '../../../contexts/user';
 import { UserService } from '../../../services/userService';
+import { UserRegistrationForm } from './Model/UserRegistrationForm';
 import './Registration.scss';
 
 interface IProps {
 }
 
 interface IRegistrationState {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-  confirmPassword?: string;
-  fieldValidationErrorMessage?: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  fieldValidationErrorMessage: string;
 }
 
 export class Registration extends Component<IProps, IRegistrationState> {
@@ -31,7 +32,7 @@ export class Registration extends Component<IProps, IRegistrationState> {
     };
   }
 
-  private isFormValid(user: User): boolean {
+  private isFormValid(user: UserRegistrationForm): boolean {
     if(user.firstName === '' || (user.firstName && user.firstName.length <= 2)) {
       this.setState({
         fieldValidationErrorMessage: 'This field requires more than 2 characters.'
@@ -56,7 +57,7 @@ export class Registration extends Component<IProps, IRegistrationState> {
       });
       return false;
     }
-    if(!(this.state.confirmPassword === user.password)) {
+    if(!(user.confirmPassword === user.password)) {
       this.setState({
         fieldValidationErrorMessage: 'Passwords do not match.'
       });
@@ -66,11 +67,10 @@ export class Registration extends Component<IProps, IRegistrationState> {
     return true;
   }
 
-  public handleChange = (e: any) => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    });
+  public handleChange = (event: any) => {
+    const { name, value } = event.target;
+    const newState = { [name]: value } as Pick<IRegistrationState, keyof IRegistrationState>;
+    this.setState(newState);
   }
 
   componentDidUpdate() {
@@ -78,17 +78,26 @@ export class Registration extends Component<IProps, IRegistrationState> {
   }
 
   public save = async () => {
-    const { firstName, lastName, email, password } = this.state;
+    const { firstName, lastName, email, password, confirmPassword } = this.state;
     
-    const user = new User();
-    user.firstName = firstName;
-    user.lastName = lastName;
-    user.email = email;
-    user.password = password;
+    const userDto: UserRegistrationForm = {
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword
+    };
 
-    if(!this.isFormValid(user)) {
+    if(!this.isFormValid(userDto)) {
       return;
     }
+
+    const user: User = {
+      firstName,
+      lastName,
+      email,
+      password
+    };
     
     const userService = new UserService();
     userService.register(user);
