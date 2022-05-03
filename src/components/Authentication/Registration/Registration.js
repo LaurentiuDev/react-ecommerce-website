@@ -55,8 +55,8 @@ export class Registration extends Component {
     return true;
   }
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
+  handleChange = (event) => {
+    const { name, value } = event.target;
     this.setState({
       [name]: value
     })
@@ -150,7 +150,7 @@ export class Registration extends Component {
               <div className='register-button-container'>
                 <Button className='register-button' color="primary" onClick={this.save}>Register</Button>
               </div>
-              <div>{fieldValidationErrorMessage}</div>
+              <div style={{color: 'red'}}>{fieldValidationErrorMessage}</div>
             </Form>
           </div>
           <p>Have already an account? <Link to={'/login'}>Login here</Link></p>
