@@ -1,0 +1,30 @@
+.table-container {
+  margin: 50px auto;
+  width: 80%;
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .table {
+    thead {
+      tr {
+        th:last-child {
+          width: 15%;
+        }
+      }
+    }
+    tbody {
+      tr {
+        img {
+          width: 60px;
+        }
+        .actions-container {
+          text-align: end;
+        }
+        .edit-button {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
