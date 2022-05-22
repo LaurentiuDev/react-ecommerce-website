@@ -1,0 +1,19 @@
+.product-container {
+  width: 240px;
+  text-align: center;
+  .product-image-container {
+    img {
+      width: 240px;
+      height: 360px;
+    }
+  }
+  .price-container {
+    color: #ef2809;
+  }
+  .product-brand-container {
+    text-transform: uppercase;
+  }
+  .product-name-containter {
+    color: #999;
+  }
+}

@@ -1,7 +1,7 @@
 .header-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   .header-tabs-container {
     display: flex;
     .header-tab-container a {
@@ -17,16 +17,18 @@
     }
   }
   .logo-container {
-    padding-left: 20px;
-    margin-left: 12px;
   }
+  .my-account-menu {
+    display: flex;
+    .search-container {
 
-  .user-container {
-    padding-left: 20px;
-    margin-left: 12px;
-  }
-  .cart-container {
-    padding-left: 20px;
-    margin-left: 12px;
+    }
+    .user-container {
+      padding-left: 20px;
+    }
+    .cart-container {
+      padding-left: 20px;
+      margin-right: 20px;
+    }
   }
 }

@@ -22,14 +22,16 @@ export class Header extends Component {
             <img src={logo} height="100" alt="Logo" />
           </Link>
         </div>
-        <div className="search-container">
-          <Search/>
-        </div>
-        <div className="user-container">
-          <Link to={'/login'}><FaUserAlt size={28}/></Link>
-        </div>
-        <div className="cart-container">
-          <Link to={'/cart'}><FaShoppingCart size={28}/></Link>
+        <div className="my-account-menu">
+          <div className="search-container">
+            <Search/>
+          </div>
+          <div className="user-container">
+            <Link to={'/login'}><FaUserAlt size={28}/></Link>
+          </div>
+          <div className="cart-container">
+            <Link to={'/cart'}><FaShoppingCart size={28}/></Link>
+          </div>
         </div>
       </div>
     );
