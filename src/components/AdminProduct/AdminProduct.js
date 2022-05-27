@@ -1,22 +1,51 @@
 import React, { Component } from 'react';
-import { Button, Table } from 'reactstrap';
+import { Button, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Table } from 'reactstrap';
 import './AdminProduct.scss';
 import ceas from './../../images/ceas.jpg';
-import { AddProductModal } from './AddProductModal/AddProductModal';
 
 export class AdminProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpenAddProductModal: false
+      name: "",
+      brand: "",
+      price: null,
+      image: null,
+      isOpenAddProductModal: false,
+      backdrop: true
     }
   }
-  onOpenAddProductModal = () => {
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
     this.setState({
-      isOpenAddProductModal: true
-    })
+      [name]: value
+    });
   }
+
+  onToggleAddProductModal = () => {
+    this.setState({
+      isOpenAddProductModal: !this.state.isOpenAddProductModal
+    });
+  }
+
+  handleImageAsFile = (event) => {
+    const image = event.target.files[0];
+    this.setState({
+      image: image
+    });
+  }
+
+  onSave = () => {
+    this.setState({
+      isOpenAddProductModal: !this.state.isOpenAddProductModal
+    });
+
+    console.log(this.state.name);
+  }
+
   render() {
+    const isOpenAddProductModal = this.state.isOpenAddProductModal;
     return (
       <div className='table-container'>
         <div className='main-header'>
@@ -24,7 +53,7 @@ export class AdminProduct extends Component {
             <h1>Products</h1>
           </div>
           <div className='add-button-container'>
-            <Button color='success' onClick={this.onOpenAddProductModal.bind(this)}>Add</Button> 
+            <Button color='success' onClick={this.onToggleAddProductModal.bind(this)}>Add</Button>
           </div>
         </div>
         <hr></hr>
@@ -53,7 +82,33 @@ export class AdminProduct extends Component {
             </tr>
           </tbody>
         </Table>
-        <AddProductModal isOpen={this.state.isOpenAddProductModal}/>
+        <Modal isOpen={isOpenAddProductModal} toggle={this.onToggleAddProductModal} backdrop={this.state.backdrop}>
+          <ModalHeader toggle={this.onToggleAddProductModal}>Add product</ModalHeader>
+          <ModalBody>
+            <Form inline onSubmit={(event) => event.preventDefault()}>
+              <FormGroup>
+                <Label for="name">Name</Label>
+                <Input type="text" name="name" onChange={this.handleChange}></Input>
+              </FormGroup>
+              <FormGroup>
+                <Label for="brand">Brand</Label>
+                <Input type="text" name="brand" onChange={this.handleChange}></Input>
+              </FormGroup>
+              <FormGroup>
+                <Label for="price">Price</Label>
+                <Input type="number" name="price" onChange={this.handleChange}></Input>
+              </FormGroup>
+              <FormGroup>
+                <Label for="image">Image</Label>
+                <Input type="file" name="image" onChange={this.handleImageAsFile}></Input>
+              </FormGroup>
+            </Form>
+          </ModalBody>
+          <ModalFooter>
+            <Button color='primary' onClick={this.onSave}>Save</Button>
+            <Button color='danger' onClick={this.onToggleAddProductModal}>Cancel</Button>
+          </ModalFooter>
+        </Modal>
       </div>
     )
   }
