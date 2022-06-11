@@ -7,16 +7,16 @@ export class MainMenu extends Component {
     return (
       <div className='category-menu-container'>
         <div className='category-menu-item-container'>
-          <Link to={'/bluze'}>Bluze</Link>
+          <Link to={'/watches'}>Ceasuri</Link>
         </div>
         <div className='category-menu-item-container'>
-          <Link to={'/camasi'}>Camasi</Link>
+          <Link to={'/bags'}>Genti</Link>
         </div>
         <div className='category-menu-item-container'>
           <Link to={'/blugi'}>Blugi</Link>
         </div>
         <div className='category-menu-item-container'>
-          <Link to={'/hanorace'}>Hanorace</Link>
+          <Link to={'/camasi'}>Camasi</Link>
         </div>
       </div>
     )

@@ -15,22 +15,26 @@ export class Home extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      products: [
-        {
-          name: "Ceas analog cu coroana texturata",
-          image: ceas,
-          brand: "Fossil",
-          price: 500.99
-        },
-        {
-          name: "Geanta crossbody de piele Primula",
-          image: geanta,
-          brand: "Furla",
-          price: 1429.99
-        }
-      ]
+    this.getAllProducts();
+  }
+
+  getAllProducts = () => {
+    fetch(`https://ionic-angular-course-6b3ff.firebaseio.com/products.json`, {
+      method: 'GET'
     })
+    .then(response => response.json())
+    .then((data) => {
+      const products = [];
+      Object.keys(data).forEach((key) => {
+        data[key].id = key;
+        products.push(data[key]);
+      })
+      console.log(data);
+      console.log(products);
+      this.setState({
+        products
+      });
+    });
   }
 
   render() {
