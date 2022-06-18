@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Product.scss';
 import ceas from '../../images/ceas.jpg';
+import { Button } from 'reactstrap';
 
 export class Product extends Component {
   constructor(props) {
@@ -14,6 +15,17 @@ export class Product extends Component {
   
     const decimalString = number.toString().split('.')[1];
     return Number(decimalString);
+  }
+
+  onAddToCart = (product) => {
+    product.isInCart = true;
+    fetch(`https://ionic-angular-course-6b3ff.firebaseio.com/products/${product.id}.json`, {
+      method: "PATCH",
+      body: JSON.stringify(product)
+    }).then((data) => {
+      console.log(data);
+      this.props.rerenderParentCallback();
+    });
   }
 
   render() {
@@ -38,6 +50,9 @@ export class Product extends Component {
             {productPriceInteger}
             <sup className='price-decimals'>{this.getDecimalPart(product.price)}</sup> Lei
           </h4>
+        </div>
+        <div className='add-to-cart-button-container'>
+          <Button className='add-to-cart-button' color="primary" onClick={() => this.onAddToCart(product)}>Adauga in cos</Button>
         </div>
       </div>
     )

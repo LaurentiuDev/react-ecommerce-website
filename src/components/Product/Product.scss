@@ -1,11 +1,14 @@
 .product-container {
   width: 240px;
-  text-align: center;
   .product-image-container {
     img {
       width: 240px;
       height: 360px;
     }
+  }
+  .price-container, .product-brand-container, .product-name-containter, .add-to-cart-button-container {
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .price-container {
     color: #ef2809;
@@ -15,5 +18,10 @@
   }
   .product-name-containter {
     color: #999;
+  }
+  .add-to-cart-button-container {
+    .add-to-cart-button {
+      width: 100%;
+    }
   }
 }

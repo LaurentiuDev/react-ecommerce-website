@@ -107,7 +107,8 @@ export class AdminProduct extends Component {
       price,
       image,
       gender,
-      category
+      category,
+      isInCart: false
     };
     if (!product.image.name) {
       this.onUpdate(product);
@@ -123,7 +124,7 @@ export class AdminProduct extends Component {
     }).then((data) => {
       console.log(data);
       this.getAllProducts();
-    })
+    });
   }
 
   onUpdate = (product) => {
@@ -133,7 +134,7 @@ export class AdminProduct extends Component {
     }).then((data) => {
       console.log(data);
       this.getAllProducts();
-    })
+    });
   }
 
   onUploadImage = (product) => {
