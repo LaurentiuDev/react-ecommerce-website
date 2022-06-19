@@ -3,8 +3,6 @@ import { Header } from '../Header/Header';
 import { MainMenu } from '../MainMenu/MainMenu';
 import { Product } from '../Product/Product';
 import './Home.scss';
-import ceas from '../../images/ceas.jpg';
-import geanta from '../../images/geanta.jpg';
 
 export class Home extends Component {
   constructor(props) {
@@ -79,7 +77,6 @@ export class Home extends Component {
 
     const gender = localStorage.getItem("gender");
     const category = localStorage.getItem("category");
-    const searchQuery = this.state.searchQuery;
     const products = this.state.products && this.state.products
       .filter(product => product.gender === gender && (category === null || product.category === category))
       .map((product, index) =>

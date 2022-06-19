@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import './Product.scss';
-import ceas from '../../images/ceas.jpg';
 import { Button } from 'reactstrap';
 
 export class Product extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   getDecimalPart = (number) => {
     if (Number.isInteger(number)) {
       return "";
@@ -35,9 +30,6 @@ export class Product extends Component {
       <div className='product-container'>
         <div className='product-image-container'>
           <img src={product.image} alt='ceas'/>
-        </div>
-        <div className='wishlist-icon-container'>
-
         </div>
         <div className='product-brand-container'>
           <h2>{product.brand}</h2>

@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import './MainMenu.scss';
 
 export class MainMenu extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   onSelectCategory = (category) => {
     localStorage.setItem("category", category);
     this.props.rerenderParentCallback();

@@ -6,10 +6,6 @@ import { FaUserAlt, FaShoppingCart } from 'react-icons/fa';
 import './Header.scss';
 
 export class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   onSelectGender = (gender) => {
     localStorage.setItem("gender", gender);
     this.props.rerenderParentCallback();
@@ -40,7 +36,7 @@ export class Header extends Component {
           </div>
           <div className="cart-container">
             <Link to={'/cart'}><FaShoppingCart size={28}/></Link>
-            <span class='badge badge-warning' id='lblCartCount'>{this.props.cartCountItems ? this.props.cartCountItems : ""}</span>
+            <span className='badge badge-warning' id='lblCartCount'>{this.props.cartCountItems ? this.props.cartCountItems : ""}</span>
           </div>
         </div>
       </div>

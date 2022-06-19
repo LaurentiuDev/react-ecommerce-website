@@ -1,0 +1,27 @@
+.cart-container {
+  width: 70%;
+  margin: 0 auto;
+  .page-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 16px;
+  }
+  .cart-items-container {
+    .order-summary {
+      padding: 16px;
+      height: fit-content;
+      border: 1px solid #e3e3e3;
+    }
+    .total-order-price {
+      display: flex;
+      justify-content: space-between;
+      .total-order-price-title {
+        font-size: 18px;
+      }
+      .total-order-price-value {
+        color: red;
+        font-size: 18px;
+      }
+    }
+  }
+}

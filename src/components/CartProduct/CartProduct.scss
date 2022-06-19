@@ -1,0 +1,37 @@
+.cart-product-container {
+  display: flex;
+  margin-bottom: 16px;
+  border: 1px solid #e3e3e3;
+  font-size: 14px;
+  .cart-product-image-container {
+    float: left;
+    img {
+      width: 240px;
+      height: 360px;
+    }
+  }
+  .cart-product-info {
+    padding: 16px;
+    width: 100%;
+    .cart-product-name-containter {
+      font-size: 16px;
+      font-family: Noto Sans,sans-serif;
+      color: #999;
+    }
+    .cart-price-container {
+      color: red;
+      display: flex;
+      height: 80%;
+      h4 {
+        margin-top: auto;
+      }
+    }
+    .cart-remove-product-container {
+      .cart-remove-product-button {
+        background-color: white;
+        border: none;
+        float: right;
+      }
+    }
+  }
+}

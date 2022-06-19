@@ -29,6 +29,7 @@
     .cart-container {
       padding-left: 20px;
       margin-right: 20px;
+      z-index: 1;
     }
   }
   .badge {
@@ -37,6 +38,8 @@
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
     border-radius: 9px;
+    cursor: pointer;
+    z-index: -1;
   }
   
   .label-warning[href],
